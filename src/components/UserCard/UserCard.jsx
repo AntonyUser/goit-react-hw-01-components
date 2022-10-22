@@ -1,4 +1,5 @@
 import { Box } from '../Box/Box';
+import PropTypes from 'prop-types';
 
 export const UserCard = ({ username, tag, location, avatar, stats }) => {
   return (
@@ -6,8 +7,8 @@ export const UserCard = ({ username, tag, location, avatar, stats }) => {
       bg="grey"
       display="flex"
       alignItems="center"
-      p="12px"
       justifyContent="center"
+      p="12px"
     >
       <Box
         display="flex"
@@ -18,7 +19,7 @@ export const UserCard = ({ username, tag, location, avatar, stats }) => {
         bg="white"
         width="300px"
         height="auto"
-        p="10px"
+        borderRadius="normal"
       >
         <Box
           className="description"
@@ -34,6 +35,7 @@ export const UserCard = ({ username, tag, location, avatar, stats }) => {
             alt={username}
             className="avatar"
             width="50%"
+            mt="12px"
           />
           <Box as="h2" className="name">
             {username}
@@ -49,10 +51,12 @@ export const UserCard = ({ username, tag, location, avatar, stats }) => {
           as="ul"
           width="100%"
           display="flex"
-          p="4px"
           className="stats"
           bg="lightgrey"
-          justifyContent="space-around"
+          // justifyContent="space-around"
+          m="0"
+          p="0"
+          borderTop="1px solid"
         >
           <Box
             as="li"
@@ -60,12 +64,17 @@ export const UserCard = ({ username, tag, location, avatar, stats }) => {
             alignItems="center"
             justifyContent="center"
             flexDirection="column"
-            p="10px"
+            pt="12px"
+            pb="12px"
+            border="normal"
+            width="33.3333%"
           >
             <Box as="span" color="grey" className="label">
               Followers
             </Box>
-            <Box className="quantity">{stats.followers}</Box>
+            <Box className="quantity" fontWeight="700">
+              {stats.followers}
+            </Box>
           </Box>
           <Box
             as="li"
@@ -73,12 +82,16 @@ export const UserCard = ({ username, tag, location, avatar, stats }) => {
             alignItems="center"
             justifyContent="center"
             flexDirection="column"
-            p="10px"
+            pt="12px"
+            pb="12px"
+            border="normal"
+            width="33.3333%"
+            borderLeft="1px solid"
           >
             <Box as="span" color="grey" className="label">
               Views
             </Box>
-            <Box as="span" className="quantity">
+            <Box as="span" className="quantity" fontWeight="700">
               {stats.views}
             </Box>
           </Box>
@@ -88,15 +101,33 @@ export const UserCard = ({ username, tag, location, avatar, stats }) => {
             alignItems="center"
             justifyContent="center"
             flexDirection="column"
-            p="10px"
+            pt="12px"
+            pb="12px"
+            borderLeft="1px solid"
+            width="33.3333%"
           >
             <Box as="span" color="grey" className="label">
               Likes
             </Box>
-            <Box className="quantity">{stats.likes}</Box>
+            <Box className="quantity" fontWeight="700">
+              {stats.likes}
+            </Box>
           </Box>
         </Box>
       </Box>
     </Box>
   );
+};
+
+UserCard.propTypes = {
+  username: PropTypes.string.isRequired,
+  tag: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+
+  stats: PropTypes.shape({
+    followers: PropTypes.number.isRequired,
+    views: PropTypes.number.isRequired,
+    likes: PropTypes.number.isRequired,
+  }),
 };
