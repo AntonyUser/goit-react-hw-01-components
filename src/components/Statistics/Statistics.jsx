@@ -26,7 +26,7 @@ export const Statistics = ({ title, data }) => {
           className="title"
           color="grey"
         >
-          {title}
+          {title.toUpperCase()}
         </Box>
         <GeneralData stats={data}></GeneralData>
       </Box>
