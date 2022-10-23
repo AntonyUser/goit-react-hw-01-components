@@ -11,16 +11,19 @@ export const FreindsListItem = ({ avatar, name, id, isOnline }) => {
       p="12px"
       alignItems="center"
       border="1px solid"
+      boxShadow="2px 3px #888888"
+      mt="12px"
+      mb="12px"
     >
       <Box
         as="span"
         display="flex"
-        width="5px"
-        height="5px"
-        bg="red"
+        width="15px"
+        height="15px"
         className="status"
         isOnline={isOnline}
         borderRadius="50%"
+        bg={isOnline ? 'green' : 'red'}
       ></Box>
       <Box
         as="img"
