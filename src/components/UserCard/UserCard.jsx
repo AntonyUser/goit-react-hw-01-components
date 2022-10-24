@@ -1,7 +1,13 @@
 import { Box } from '../Box/Box';
 import PropTypes from 'prop-types';
 
-export const UserCard = ({ username, tag, location, avatar, stats }) => {
+export const Profile = ({
+  username,
+  tag,
+  location,
+  avatar,
+  stats: { followers, views, likes },
+}) => {
   return (
     <Box
       bg="grey"
@@ -73,7 +79,7 @@ export const UserCard = ({ username, tag, location, avatar, stats }) => {
               Followers
             </Box>
             <Box className="quantity" fontWeight="700">
-              {stats.followers}
+              {followers}
             </Box>
           </Box>
           <Box
@@ -92,7 +98,7 @@ export const UserCard = ({ username, tag, location, avatar, stats }) => {
               Views
             </Box>
             <Box as="span" className="quantity" fontWeight="700">
-              {stats.views}
+              {views}
             </Box>
           </Box>
           <Box
@@ -110,7 +116,7 @@ export const UserCard = ({ username, tag, location, avatar, stats }) => {
               Likes
             </Box>
             <Box className="quantity" fontWeight="700">
-              {stats.likes}
+              {likes}
             </Box>
           </Box>
         </Box>
@@ -119,7 +125,7 @@ export const UserCard = ({ username, tag, location, avatar, stats }) => {
   );
 };
 
-UserCard.propTypes = {
+Profile.propTypes = {
   username: PropTypes.string.isRequired,
   tag: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,

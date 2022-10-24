@@ -12,13 +12,13 @@ export const FriendsList = ({ friends }) => {
       p="12px"
       alignItems="center"
     >
-      {friends.map(friend => {
+      {friends.map(({ id, avatar, name, isOnline }) => {
         return (
           <FreindsListItem
-            id={friend.id}
-            avatar={friend.avatar}
-            name={friend.name}
-            isOnline={friend.isOnline}
+            key={id}
+            avatar={avatar}
+            name={name}
+            isOnline={isOnline}
           />
         );
       })}
@@ -27,12 +27,14 @@ export const FriendsList = ({ friends }) => {
 };
 
 FriendsList.propTypes = {
-  friends: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.number.isRequired,
-      avatar: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      isOnline: PropTypes.bool.isRequired,
-    })
+  transactionList: PropTypes.exact(
+    PropTypes.arrayOf(
+      PropTypes.exact({
+        id: PropTypes.number.isRequired,
+        avatar: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        isOnline: PropTypes.bool.isRequired,
+      })
+    )
   ),
 };
