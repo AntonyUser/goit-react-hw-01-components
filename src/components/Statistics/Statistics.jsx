@@ -2,7 +2,7 @@ import { Box } from '../Box/Box';
 import PropTypes from 'prop-types';
 import { getRandomHexColor } from './GetRandomColor';
 
-export const Statistics = ({ title, stats }) => {
+export const Statistics = ({ title = '', stats }) => {
   return (
     <Box
       bg="lightgrey"
@@ -19,16 +19,17 @@ export const Statistics = ({ title, stats }) => {
         className="statistics"
         borderRadius="normal"
       >
-        <Box
-          as="h2"
-          display="flex"
-          justifyContent="center"
-          className="title"
-          color="grey"
-        >
-          {title.toUpperCase()}
-        </Box>
-
+        {title && (
+          <Box
+            as="h2"
+            display="flex"
+            justifyContent="center"
+            className="title"
+            color="grey"
+          >
+            {title.toUpperCase()}
+          </Box>
+        )}
         <Box
           as="ul"
           display="flex"
@@ -67,14 +68,12 @@ export const Statistics = ({ title, stats }) => {
 };
 
 Statistics.propTypes = {
-  title: PropTypes.string.isRequired,
-  stats: PropTypes.exact(
-    PropTypes.arrayOf(
-      PropTypes.exact({
-        id: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired,
-        percentage: PropTypes.number.isRequired,
-      })
-    )
+  title: PropTypes.string,
+  stats: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
+    })
   ),
 };
