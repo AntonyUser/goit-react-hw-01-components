@@ -27,7 +27,7 @@ export const FriendsList = ({ friends }) => {
 };
 
 FriendsList.propTypes = {
-  transactionList: PropTypes.arrayOf(
+  friends: PropTypes.arrayOf(
     PropTypes.exact({
       id: PropTypes.number.isRequired,
       avatar: PropTypes.string.isRequired,
